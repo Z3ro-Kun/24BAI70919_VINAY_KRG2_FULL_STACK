@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <p id="text">This is a paragraph.</p>
+    <button onclick="changeText()">Click Me</button>
+    <script>
+        function changeText() {
+            const paragraph=document.getElementById("text");
+            paragraph.textContent="Welcome to JavaScript DOM manipulation";
+            paragraph.style.color="blue";
+            paragraph.style.fontSize="24px";
+        }
+    </script>
+</body>
+</html>
