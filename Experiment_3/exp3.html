@@ -1,0 +1,247 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Search Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f2f5;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            margin: 20px 0 30px;
+            color: #2c3e50;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        form, #profile {
+            background: white;
+            padding: 30px;
+            border-radius: 10px;
+            max-width: 420px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        .input-group {
+            margin-bottom: 15px;
+        }
+
+        label {
+            font-weight: 600;
+            color: #34495e;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        input[type="text"], input[type="email"], select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #ccd1d9;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.2s ease;
+        }
+
+        input:focus, select:focus {
+            outline: none;
+            border-color: #3498db;
+        }
+
+        fieldset {
+            margin-bottom: 20px;
+            border: 1px solid #ccd1d9;
+            border-radius: 6px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: 600;
+            color: #34495e;
+            padding: 0 5px;
+        }
+
+        .check-group label {
+            font-weight: normal;
+            display: inline-flex;
+            align-items: center;
+            margin-right: 15px;
+            margin-bottom: 8px;
+            cursor: pointer;
+        }
+
+        .check-group input {
+            margin-right: 5px;
+            margin-bottom: 0;
+            cursor: pointer;
+        }
+
+        .button-group {
+            display: flex;
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        button {
+            flex: 1;
+            padding: 12px;
+            border: none;
+            border-radius: 6px;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        .submit {
+            background: #3498db;
+            color: white;
+        }
+
+        .submit:hover {
+            background: #2980b9;
+        }
+
+        .reset {
+            background: #95a5a6;
+            color: white;
+        }
+
+        .reset:hover {
+            background: #7f8c8d;
+        }
+
+        #profile {
+            display: none;
+            align-self: flex-start;
+        }
+
+        #profile h2 {
+            margin-top: 0;
+            border-bottom: 2px solid #ecf0f1;
+            padding-bottom: 10px;
+            color: #2c3e50;
+        }
+
+        .profile-detail {
+            margin-bottom: 12px;
+            font-size: 15px;
+            color: #555;
+            line-height: 1.4;
+        }
+
+        .profile-detail strong {
+            color: #2c3e50;
+            display: inline-block;
+            width: 90px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Search Form</h1>
+    <div class="container">
+        <form id="jobForm">
+            <div class="input-group">
+                <label for="userName">Name:</label>
+                <input type="text" id="userName" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="userEmail">Email:</label>
+                <input type="email" id="userEmail" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="userJob">Job Role:</label>
+                <input type="text" id="userJob" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="userLocation">Location:</label>
+                <select id="userLocation">
+                    <option>India</option>
+                    <option>USA</option>
+                    <option>UK</option>
+                </select>
+            </div>
+
+            <fieldset class="check-group">
+                <legend>Experience</legend>
+                <label><input type="radio" name="exp" value="Fresher"> Fresher</label>
+                <label><input type="radio" name="exp" value="1-3 Years"> 1-3 Years</label>
+                <label><input type="radio" name="exp" value="3+ Years"> 3+ Years</label>
+            </fieldset>
+
+            <fieldset class="check-group">
+                <legend>Skills</legend>
+                <label><input type="checkbox" class="skills" value="Python"> Python</label>
+                <label><input type="checkbox" class="skills" value="Java"> Java</label>
+                <label><input type="checkbox" class="skills" value="Web Dev"> Web Dev</label>
+            </fieldset>
+
+            <div class="button-group">
+                <button type="button" class="submit" onclick="showProfile()">Submit</button>
+                <button type="reset" class="reset" onclick="hideProfile()">Reset</button>
+            </div>
+        </form>
+
+        <div id="profile">
+            <h2>User Profile</h2>
+            <div class="profile-detail"><strong>Name:</strong> <span id="pname"></span></div>
+            <div class="profile-detail"><strong>Email:</strong> <span id="pemail"></span></div>
+            <div class="profile-detail"><strong>Job Role:</strong> <span id="pjob"></span></div>
+            <div class="profile-detail"><strong>Location:</strong> <span id="plocation"></span></div>
+            <div class="profile-detail"><strong>Experience:</strong> <span id="pexp"></span></div>
+            <div class="profile-detail"><strong>Skills:</strong> <span id="pskills"></span></div>
+        </div>
+    </div>
+
+    <script>
+        function showProfile() {
+            const nameEl = document.getElementById('userName');
+            const emailEl = document.getElementById('userEmail');
+            const jobEl = document.getElementById('userJob');
+            const locationEl = document.getElementById('userLocation');
+            const profileCard = document.getElementById('profile');
+            
+            if (!emailEl.checkValidity() || nameEl.value.trim() === '') {
+                alert("Please fill out the required fields correctly.");
+                return;
+            }
+
+            document.getElementById('pname').innerText = nameEl.value;
+            document.getElementById('pemail').innerText = emailEl.value;
+            document.getElementById('pjob').innerText = jobEl.value;
+            document.getElementById('plocation').innerText = locationEl.value;
+
+            let exp = document.querySelector('input[name="exp"]:checked');
+            document.getElementById('pexp').innerText = exp ? exp.value : "None selected";
+
+            let skills = document.querySelectorAll(".skills:checked");
+            let skillsList = Array.from(skills).map(s => s.value).join(", ");
+            document.getElementById('pskills').innerText = skillsList || "None selected";
+
+            profileCard.style.display = "block";
+        }
+
+        function hideProfile() {
+            document.getElementById('profile').style.display = "none";
+        }
+    </script>
+</body>
+</html>

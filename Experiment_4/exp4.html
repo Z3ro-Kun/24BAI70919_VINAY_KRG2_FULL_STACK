@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Posting Form</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            background-color: #f3f4f6;
+            color: #1f2937;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            text-align: center;
+            color: #111827;
+            margin-bottom: 30px;
+        }
+
+        .container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        form {
+            background: white;
+            padding: 30px;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 500px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+
+        .input-group {
+            margin-bottom: 16px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 6px;
+            font-weight: 600;
+            font-size: 14px;
+            color: #374151;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 10px 12px;
+            border: 1px solid #d1d5db;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #6366f1;
+            box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            margin-top: 10px;
+            background: #6366f1;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.2s ease;
+        }
+
+        button:hover {
+            background: #4f46e5;
+        }
+
+        #jobList {
+            margin-top: 40px;
+            width: 100%;
+            max-width: 1000px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .jobCard {
+            background: white;
+            width: 100%;
+            max-width: 320px;
+            padding: 20px;
+            border-radius: 10px;
+            border-left: 6px solid #6366f1;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+        }
+
+        .jobCard h3 {
+            margin: 0;
+            color: #111827;
+            font-size: 18px;
+        }
+
+        .company {
+            font-weight: 600;
+            color: #4b5563;
+            font-size: 15px;
+        }
+
+        .location {
+            color: #6b7280;
+            font-size: 14px;
+        }
+
+        .desc {
+            margin-top: 8px;
+            color: #374151;
+            font-size: 14px;
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <h1>Job Posting Form</h1>
+    <div class="container">
+        <form id="postJobForm">
+            <div class="input-group">
+                <label for="title">Job Title:</label>
+                <input type="text" id="title" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="company">Company Name:</label>
+                <input type="text" id="company" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="location">Location:</label>
+                <input type="text" id="location" required>
+            </div>
+            
+            <div class="input-group">
+                <label for="type">Job Type:</label>
+                <select id="type">
+                    <option value="Full Time">Full Time</option>
+                    <option value="Part Time">Part Time</option>
+                    <option value="Internship">Internship</option>
+                </select>
+            </div>
+            
+            <div class="input-group">
+                <label for="desc">Description:</label>
+                <textarea id="desc" rows="4" required></textarea>
+            </div>
+            
+            <button type="button" onclick="addJob()">Post Job</button>
+        </form>
+        <div id="jobList"></div>
+    </div>
+
+    <script>
+        function addJob() {
+            const title = document.getElementById("title").value.trim();
+            const company = document.getElementById("company").value.trim();
+            const location = document.getElementById("location").value.trim();
+            const type = document.getElementById("type").value;
+            const desc = document.getElementById("desc").value.trim();
+
+            if (!title || !company || !location || !desc) {
+                alert("Please fill in all fields before posting.");
+                return;
+            }
+
+            const card = document.createElement("div");
+            card.className = "jobCard";
+            
+            card.innerHTML = `
+                <h3>${title}</h3>
+                <div class="company">${company}</div>
+                <div class="location">${location} &bull; ${type}</div>
+                <div class="desc">${desc}</div>
+            `;
+            
+            document.getElementById("jobList").appendChild(card);
+            document.getElementById("postJobForm").reset();
+        }
+    </script>
+</body>
+</html>

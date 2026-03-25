@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resume</title>
+
+    <style>
+        body{
+            border: 5px solid black;
+            padding: 15px;
+            margin: 20px;
+            font-family: Arial, sans-serif;
+        }
+
+        /* HEADER USING GRID */
+        #header{
+            display: grid;
+            grid-template-columns: 3fr 1fr;
+            align-items: center;
+        }
+
+        img {
+            border-radius: 50%;
+            clip-path: circle(40%);
+            justify-self: end;
+        }
+
+        /* SOCIALS USING GRID */
+        #socials{
+            margin-top: 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+            background-color: lightgrey;
+            border-radius: 20px;
+            padding: 10px;
+            text-align: center;
+        }
+
+        .social{
+            padding: 10px;
+            background-color: pink;
+            border-radius: 20px;
+        }
+
+        h2{
+            border-bottom: 2px solid black;
+            margin-top: 30px;
+        }
+
+        .section{
+            margin-top: 10px;
+        }
+
+        ul{
+            margin-left: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- HEADER -->
+    <div id="header">
+        <div>
+            <h1>Vinay Tiwari</h1>
+            <h3>Machine Learning Engineer</h3>
+            <p>Uttarakhand, India</p>
+        </div>
+
+        <div>
+            <img src="./image/Rimuru1.jpg" alt="Profile Picture" width="180" height="160">
+        </div>
+    </div>
+
+    <!-- SOCIAL LINKS -->
+    <div id="socials">
+        <div class="social">
+            Email:<br>
+            <u style="color: blue;">msvinay777@gmail.com</u>
+        </div>
+        <div class="social">
+            LinkedIn:<br>
+            <u style="color: blue;">linkedin.com/in/vinaytiwari</u>
+        </div>
+        <div class="social">
+            GitHub:<br>
+            <u style="color: blue;">github.com/vinaytiwari</u>
+        </div>
+    </div>
+
+    <!-- SUMMARY -->
+    <div class="section">
+        <h2>Summary</h2>
+        <p>
+            Second-year Computer Science Engineering student specializing in AI and ML with a strong
+            foundation in Python and experience in GUI development, APIs, and AI fundamentals.
+            Motivated learner with strong problem-solving skills.
+        </p>
+    </div>
+
+    <!-- SKILLS -->
+    <div class="section" id="skills">
+        <h2>Skills</h2>
+        <ul>
+            <li><b>Programming:</b> Python, C++, Java</li>
+            <li><b>Libraries:</b> Tkinter, Pandas, NumPy, OpenCV</li>
+            <li><b>Tools:</b> PyCharm, Jupyter Notebook</li>
+            <li><b>Languages:</b> English, Hindi</li>
+        </ul>
+    </div>
+
+    <!-- EDUCATION -->
+    <div class="section" id="Education">
+        <h2>Education</h2>
+        <ul>
+            <li>
+                <b>B.Tech CSE (AI & ML)</b> – Chandigarh University<br>
+                GPA: 8.0
+            </li>
+            <li>
+                <b>Senior Secondary</b> – Shri Ram Centennial School, Dehradun<br>
+                89.6%
+            </li>
+            <li>
+                <b>Class X</b> – Shri Ram Centennial School, Dehradun<br>
+                95.6%
+            </li>
+        </ul>
+    </div>
+
+    <!-- PROJECTS -->
+    <div class="section" id="projects">
+        <h2>Projects</h2>
+        <ul>
+            <li>GUI-Based Quiz App (Tkinter + API)</li>
+            <li>Snake & Pong Games (Tkinter)</li>
+            <li>Anime Recommender Website</li>
+            <li>Email Notifier (ISS Tracker)</li>
+            <li>PsySense (Ongoing AI Project)</li>
+        </ul>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="section" id="footer">
+        <p style="text-align: center;">© 2026 Vinay Tiwari</p>
+    </div>
+
+</body>
+</html>
